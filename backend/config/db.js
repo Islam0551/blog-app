@@ -1,9 +1,11 @@
-let { Pool } = require('pg')
+const { Pool } = require('pg');
 
-require('dotenv').config()
+const pool = new Pool({
+  user: 'postgres',
+  host: 'localhost',
+  database: 'qwerty2',
+  password: 'qwerty2024',
+  port: 5432,
+});
 
-let pool = new Pool({
-    connectionString: process.env.DATABASE_URL
-})
-
-module.exports = pool
+module.exports = pool;

@@ -20,7 +20,7 @@ function authenticateToken(req,res,next){
 
 let limiter = rateLimit({
     windowMs: 1 * 60 * 1000,
-    max:2,
+    max: 100,
     message: "Too many requests, try again after 1 min",
     statusCode:429
 })
