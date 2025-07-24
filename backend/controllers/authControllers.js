@@ -70,3 +70,13 @@ exports.addPost = async(req,res)=>{
         res.status(500).json({message:"Постты еңгізуде қателіктер туындады!"})
     }
 }
+
+exports.posts = async(req,res)=>{
+    try{
+        let results = await pool.query('select * from posts order by created_at desc')
+        results.rows.length > 0 ? res.status(200).json(results.rows) : res.status(404).json({message:"Posts not found!"})
+    }catch(err){
+        console.log("DB-дан алу сәтсіз болды!", err);
+        res.status(400).json({message:"Постты алуда қателіктер туындады!"})
+    }
+}
